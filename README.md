@@ -30,6 +30,8 @@
   
 ## Test
   to test if the application is working properly, follow the instructions in the usage section, then open an instance of insomnia and run through the routes provided in the routes folder of the code.
+
+  Video Walkthrough:  [youtube]()
   
 ## Contribution
   To contribute to this project, N/A

@@ -12,8 +12,7 @@ router.get('/', (req, res) => {
         attributes: ['category_name']
       },
       {
-        model: Tag,
-        attributes: ['tag_name']
+        model: Tag, through: ProductTag,
       }
     ]
   }
@@ -36,8 +35,7 @@ router.get('/:id', (req, res) => {
         attributes: ['category_name']
       },
       {
-        model: Tag,
-        attributes: ['tag_name']
+        model: Tag, through: ProductTag,
       }
     ]
   }
@@ -68,6 +66,7 @@ router.post('/', (req, res) => {
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
+        console.log(req.body)
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
             product_id: product.id,
@@ -136,7 +135,7 @@ router.delete('/:id', (req, res) => {
   })
     .then(productData => {
       if (!productData) {
-        res.status(404).json({ message: 'No Category found with that ID.' })
+        res.status(404).json({ message: 'No Product found with that ID.' })
         return;
       }
       res.json(productData);
